@@ -1,0 +1,41 @@
+
+	<h1>Contatos</h1>
+	<div class="row justify-content-center">
+		<div class="col-12">
+			<table class="table table-hover table-responsive-lg">
+				<thead>
+					<tr>
+						<th scope="col">Nome</th>
+						<th scope="col">Sobrenome</th>
+						<th scope="col" style="width:35%">E-Mail</th>
+						<th scope="col" style="width:15%"></th>
+						<th scope="col" style="width:15%"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach ($this->retorno as $contato):?>
+					<tr>
+						<td><?php echo $contato['nome'] ?></td>
+						<td><?php echo $contato['sobrenome'] ?></td>
+						<td><?php echo $contato['email'] ?></td>
+						<td>
+							<button class="btn col-12" onclick=" window.open('<?php echo $this->baseURL();?>/contato/editar?idContato=<?php echo $contato['idContato'] ?> ','_self') " >Editar Contato</button>
+						</td>
+						<td>
+							<button class="btn col-12" onclick=" window.open('<?php echo $this->baseURL();?>/contato/excluir?idContato=<?php echo $contato['idContato'] ?> ','_self') " >Excluir Contato</button>
+						</td>
+					</tr>
+					<?php endforeach; ?>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><button class="btn col-12" onclick=" window.open('<?php echo $this->baseURL();?>/contato/novo','_self') ">Novo Contato</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<?// php echo (true)? 'verdadeiro':'falso';  ?>

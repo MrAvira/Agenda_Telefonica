@@ -1,0 +1,139 @@
+<form action="#" method="GET">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" class="form-control" placeholder="Maria" required value=<?php echo (isset($this->dados)&& array_key_exists('nome',$this->dados))?$this->dados['nome']:'' ?> >
+        </div>
+        <div class="form-group col-md-6">
+            <label for="sobrenome">Sobrenome</label>
+            <input type="text" name="sobrenome" id="sobrenome" class="form-control" placeholder="Jonhson" required value=<?php echo isset($this->dados)&& array_key_exists('sobrenome',$this->dados)?$this->dados['sobrenome']:'' ?>>
+        </div>
+    </div>
+    <div class="form-group">
+            <label for="email">E-Mail</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="grandeamigo@hotmail.com" value=<?php echo isset($this->dados)&& array_key_exists('email',$this->dados)?$this->dados['email']:'' ?>>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="endereco">Endereço</label>
+            <input type="text" name="endereco" id="endereco" class="form-control" placeholder="Av. Tijolinhos Amarelos" value=<?php echo isset($this->dados)&& array_key_exists('endereco',$this->dados)?$this->dados['endereco']:'' ?>>
+        </div>
+        <div class="form-group col-md-2 col-4">
+            <label for="numero">Número</label>
+            <input type="text" name="numero" id="numero" class="form-control" placeholder="0001" value=<?php echo isset($this->dados)&& array_key_exists('numero',$this->dados)?$this->dados['numero']:'' ?>>
+        </div>
+        <div class="form-group col-md-2 col-4">
+            <label for="complemento">Complemento</label>
+            <input type="text" name="complemento" id="complemento" class="form-control" placeholder="Quarto 1" value=<?php echo isset($this->dados)&& array_key_exists('complemento',$this->dados)?$this->dados['complemento']:'' ?>>
+        </div>
+        <div class="form-group col-md-2 col-4">
+                <label for="cep">CEP</label>
+                <input type="text" name="cep" id="cep" class="form-control" placeholder="17000-700" value=<?php echo isset($this->dados)&& array_key_exists('cep',$this->dados)?$this->dados['cep']:'' ?>>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="organizacao">Organização</label>
+        <input type="text" name="organizacao" id="organizacao" class="form-control" placeholder="Sol Dourado LTDA" value=<?php echo isset($this->dados)&& array_key_exists('organizacao',$this->dados)?$this->dados['organizacao']:'' ?>>
+    </div>
+    <div class="form-group">
+        <label for="descricao">Descrição</label>
+        <textarea class="form-control" name="descricao" id="descricao" cols="30" rows="2" placeholder="Um amigo muito importante." ><?php echo isset($this->dados) && array_key_exists('descricao',$this->dados)?$this->dados['descricao']:'' ?></textarea>
+    </div>
+    <div class="form-group">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th hidden></th>
+                    <th scope="col">Número de Telefône</th>
+                    <th scope="col"><button type="button" onclick="adicionarLinha(event)" class="btn btn-primary">Novo Número</button></th>
+                </tr>
+            </thead>
+
+            <tbody id="tableBody">
+            <?php 
+                if(isset($this->dados) && array_key_exists('telefones',$this->dados)){
+                    foreach ($this->dados['telefones'] as $value) {      
+            ?>
+                <tr>
+                    <td hidden><input hidden type="text" name="telefones[idTelefone][]" value="<?php echo $value['idTelefone']?>" id="" class="form-control"></td>
+                    <td><input placeholder="(99)9 9999-9999" type="text" name="telefones[numero][]" value="<?php echo $value['numero'] ?>"  id="" class="form-control"></td>
+                    <td><button class="btn col-12" onclick="excluirLinha(event)">Excluir</button></td>
+                </tr>
+            <?php
+                    }
+                }else{
+            ?>
+                    <td hidden><input hidden type="text" name="telefones[idTelefone][]" value="" id="" class="form-control"></td>
+                    <td><input placeholder="(99)9 9999-9999" type="text" name="telefones[numero][]" value=""  id="" class="form-control time-mask" ></td>
+                    <td><button type="button" class="btn col-12" onclick="excluirLinha(event)">Excluir</button></td>
+            <?php
+                }
+            ?>
+            </tbody>
+        </table>
+    </div>
+    <input hidden type="text" name="telefonesExcluir" id="telefonesExcluir" value="" >
+    <input hidden type="text" name="action" id="action" value=<?php echo Zend_Controller_Front::getInstance()->getRequest()->getActionName();?> >
+    <input hidden type="text" name="idContato" id="idContato" value=<?php echo isset($this->dados) && array_key_exists('idContato',$this->dados)?$this->dados['idContato']:''?>>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+
+<script type="text/javascript">
+    function adicionarLinha(e){
+        var tbody=document.getElementById('tableBody');
+        var tr = document.createElement('tr');
+        
+        var td = document.createElement('td');
+        td.setAttribute("hidden","hidden");
+        var input = document.createElement('input');
+        setAttributes(input,{
+            "hidden":"hidden",
+            "type":"text",
+            "class":"form-control",
+            "name":"telefones[idTelefone][]"
+        });
+        td.appendChild(input);
+        tr.appendChild(td);
+        
+        var td = document.createElement('td');
+        var input = document.createElement('input');
+        setAttributes(input,{
+            "type":"text",
+            "class":"form-control",
+            "name":"telefones[numero][]",
+            "placeholder":"(99)9 9999-9999"
+        });
+        td.appendChild(input);
+        tr.appendChild(td);
+
+        var td = document.createElement('td');
+        var button = document.createElement('button');
+        setAttributes(button,{
+            "type":"button",
+            "class":"btn col-12",
+            "onclick":"excluirLinha(event)"
+        });
+        button.textContent = "Excluir";
+        td.appendChild(button);
+        tr.appendChild(td);
+
+
+        tbody.appendChild(tr);
+        
+
+    }
+
+    function excluirLinha(e){
+        if(e.target.parentElement.parentElement.hasChildNodes()){
+            var tel = document.getElementById('telefonesExcluir');
+            tel.setAttribute('value',tel.value +";"+ e.target.parentElement.parentElement.children[0].children[0].value);
+        }
+        e.target.parentNode.parentNode.parentNode.removeChild(e.target.parentNode.parentNode);
+    }
+
+    function setAttributes(element, attributes){
+        for(var attribute in attributes){
+            element.setAttribute(attribute,attributes[attribute]);
+        }
+    }
+</script>

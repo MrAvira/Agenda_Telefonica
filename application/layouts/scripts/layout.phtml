@@ -1,0 +1,48 @@
+<?php echo $this->doctype() ?>
+<html lang="pt-br">
+<head>
+    <?php 
+        echo $this->headTitle();
+        echo $this->headMeta();
+        echo $this->headScript();
+        echo $this->headLink(); 
+    ?>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
+        <a class="navbar-brand" href="<?php echo $this->baseUrl() ?>">Agenda de Telefônica</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown dropdown">
+                <div class="btn-group">
+                    <a href="<?php echo $this->baseUrl('contato') ?>" class="btn btn-link nav-link">Contatos</a>
+                    <a href="#" class="btn btn-link nav-link dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="<?php echo $this->baseURL();?>/contato/novo">Novo Contato</a>
+                    </div>
+                </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container col-12 col-lg-10">
+        <?php echo $this->layout()->content; ?>
+    </div>
+
+    <footer id="footer" class="page-footer relative-bottom navbar-fixed-bottom">
+        <div class="text-center" >
+            <p>Flávio Nascimento <?php echo $this->baseUrl() ?></p>
+        </div>
+    </footer>
+
+    <?php  ?>
+</body>
+</html>
