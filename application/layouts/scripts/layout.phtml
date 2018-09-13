@@ -1,5 +1,5 @@
 <?php echo $this->doctype() ?>
-<html lang="pt-br">
+<html lang="pt-br" style="height: 100%">
 <head>
     <?php 
         echo $this->headTitle();
@@ -7,12 +7,10 @@
         echo $this->headScript();
         echo $this->headLink(); 
     ?>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
-<body>
+<body style="height: 87%;">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
-        <a class="navbar-brand" href="<?php echo $this->baseUrl() ?>">Agenda de Telefônica</a>
+        <a class="navbar-brand" title="Pagina Inicial" href="<?php echo $this->baseUrl() ?>">Agenda de Telefônica</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -26,23 +24,39 @@
                         <span class="sr-only">Toggle Dropdown</span>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="<?php echo $this->baseURL();?>/contato/novo">Novo Contato</a>
+                        <a class="dropdown-item" title="Criar Novo Contato" href="<?php echo $this->baseURL();?>/contato/novo">Novo Contato</a>
                     </div>
                 </div>
                 </li>
             </ul>
         </div>
     </nav>
-    <div class="container col-12 col-lg-10">
+    <div class="container col-12 col-lg-10 mb-5" style="height: 100%">
         <?php echo $this->layout()->content; ?>
     </div>
 
-    <footer id="footer" class="page-footer relative-bottom navbar-fixed-bottom">
-        <div class="text-center" >
-            <p>Flávio Nascimento <?php echo $this->baseUrl() ?></p>
+    <footer class="navbar sticky-bottom navbar-dark bg-primary">
+        <div class="container">
+            <div class="navbar-text">
+            <div class="row">
+                <div class="col-lg-4">
+                    <a href="#"> LINKEDIN</a>
+                    <a href="#"> FACEBOOK</a>
+                    <a href="#"> GITHUB</a>
+                </div>
+                <div class="col-md-4">
+                    <a href="#"> LINKEDIN</a>
+                    <a href="#"> FACEBOOK</a>
+                    <a href="#"> GITHUB</a>
+                </div>
+                <div class="col-md-4">
+                    <a href="#"> LINKEDIN</a>
+                    <a href="#"> FACEBOOK</a>
+                    <a href="#"> GITHUB</a>
+                </div>
+                </div>
+            </div>
         </div>
     </footer>
-
-    <?php  ?>
 </body>
 </html>

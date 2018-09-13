@@ -14,7 +14,31 @@ class ContatoController extends Zend_Controller_Action
         $dbTable = new Application_Model_DbTable_Contatos();
         //$retorno = $dbTable->fetchAll(array('idContato = ?'=>'2','sobrenome = ?'=>'Um')); exemplo de fetchAll com WHERE
         $retorno = $dbTable->fetchAll();
-        $this->view->retorno = $retorno;  
+        $this->view->retorno = $retorno;
+        
+        $dados = $_GET;
+        if (!is_null($dados) && !empty($dados['idContato'])) {
+            $contato = $dbTable->fetchRow(array('idContato = ?' => $dados['idContato']));
+            $dbTable = new Application_Model_DbTable_Telefones();
+            $telefones = $dbTable->fetchAll(array('idContato = ?' => $dados['idContato']));
+            $this->view->dados = array(
+                'idContato'     =>$contato->idContato,
+                'nome'          =>$contato->nome,
+                'sobrenome'     =>$contato->sobrenome,
+                'descricao'     =>$contato->descricao,
+                'organizacao'   =>$contato->organizacao,
+                'email'         =>$contato->email,
+                'endereco'      =>$contato->endereco,
+                'numero'        =>$contato->numero,
+                'complemento'   =>$contato->complemento,
+                'cep'           =>$contato->cep
+            );
+            foreach ($telefones as $value) {
+                $this->view->dados['telefones'][] = $value['numero'];
+            }
+
+            //var_dump($this->view->dados);
+        }
         
     }
 
@@ -132,14 +156,14 @@ class ContatoController extends Zend_Controller_Action
                     'email'         =>$contato->email,
                     'endereco'      =>$contato->endereco,
                     'numero'        =>$contato->numero,
-                    'complemento'   =>$contato->complemento
+                    'complemento'   =>$contato->complemento,
+                    'cep'   =>$contato->cep
                 );
 
                 $dbTable = new Application_Model_DbTable_Telefones();
                 $telefones = $dbTable->fetchAll(array('idContato = ?' => $contato->idContato));
 
                 foreach ($telefones as $value) {
-                    echo '<br><br>';
                     $this->view->dados['telefones'][] = array(
                         'idContato' => $value['idContato'],
                         'idTelefone' => $value['idTelefone'],
