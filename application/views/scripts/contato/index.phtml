@@ -49,44 +49,44 @@
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="nome">Nome</label>
-				<input readonly type="text" name="nome" id="nome" class="form-control-plaintext" placeholder="Maria" required value="<?php echo (isset($this->dados)&& array_key_exists('nome',$this->dados))?$this->dados['nome']:'' ?>" >
+				<input readonly type="text" name="nome" id="nome" class="form-control-plaintext " placeholder="Maria" required value="<?php echo (isset($this->dados)&& array_key_exists('nome',$this->dados))?$this->dados['nome']:'' ?>" >
 			</div>
 			<div class="form-group col-md-6">
 				<label for="sobrenome">Sobrenome</label>
-				<input readonly type="text" name="sobrenome" id="sobrenome" class="form-control-plaintext" placeholder="Jonhson" required value="<?php echo isset($this->dados)&& array_key_exists('sobrenome',$this->dados)?$this->dados['sobrenome']:'' ?>">
+				<input readonly type="text" name="sobrenome" id="sobrenome" class="form-control-plaintext " placeholder="Jonhson" required value="<?php echo isset($this->dados)&& array_key_exists('sobrenome',$this->dados)?$this->dados['sobrenome']:'' ?>">
 			</div>
 		</div>
 		<div class="form-group form-row">
 			<div class="form-group col-md-12">
 				<label for="email">E-Mail</label>
-				<input readonly type="email" class="form-control-plaintext" name="email" id="email" placeholder="grandeamigo@hotmail.com" value="<?php echo isset($this->dados)&& array_key_exists('email',$this->dados)?$this->dados['email']:'' ?>">
+				<input readonly type="email" class="form-control-plaintext " name="email" id="email" placeholder="grandeamigo@hotmail.com" value="<?php echo isset($this->dados)&& array_key_exists('email',$this->dados)?$this->dados['email']:'' ?>">
 			</div>
 		</div>
 		<div class="form-row">
 			<div class="form-group col-md-5">
 				<label for="endereco">Endereço</label>
-				<input readonly type="text" name="endereco" id="endereco" class="form-control-plaintext" placeholder="Av. Tijolinhos Amarelos" value="<?php echo isset($this->dados)&& array_key_exists('endereco',$this->dados)?$this->dados['endereco']:'' ?>">
+				<input readonly type="text" name="endereco" id="endereco" class="form-control-plaintext " placeholder="Av. Tijolinhos Amarelos" value="<?php echo isset($this->dados)&& array_key_exists('endereco',$this->dados)?$this->dados['endereco']:'' ?>">
 			</div>
 			<div class="form-group col-md-2 col-4">
 				<label for="numero">Número</label>
-				<input readonly type="text" name="numero" id="numero" class="form-control-plaintext" placeholder="0001" value="<?php echo isset($this->dados)&& array_key_exists('numero',$this->dados)?$this->dados['numero']:'' ?>">
+				<input readonly type="text" name="numero" id="numero" class="form-control-plaintext " placeholder="0001" value="<?php echo isset($this->dados)&& array_key_exists('numero',$this->dados)?$this->dados['numero']:'' ?>">
 			</div>
 			<div class="form-group col-md-3 col-4">
 				<label for="complemento">Complemento</label>
-				<input readonly type="text" name="complemento" id="complemento" class="form-control-plaintext" placeholder="Quarto 1" value="<?php echo isset($this->dados)&& array_key_exists('complemento',$this->dados)?$this->dados['complemento']:'' ?>">
+				<input readonly type="text" name="complemento" id="complemento" class="form-control-plaintext " placeholder="Quarto 1" value="<?php echo isset($this->dados)&& array_key_exists('complemento',$this->dados)?$this->dados['complemento']:'' ?>">
 			</div>
 			<div class="form-group col-md-2 col-4">
 					<label for="cep">CEP</label>
-					<input readonly type="text" name="cep" id="cep" class="form-control-plaintext" placeholder="17000-700" value="<?php echo isset($this->dados)&& array_key_exists('cep',$this->dados)?$this->dados['cep']:'' ?>">
+					<input readonly type="text" name="cep" id="cep" class="form-control-plaintext " placeholder="17000-700" value="<?php echo isset($this->dados)&& array_key_exists('cep',$this->dados)?$this->dados['cep']:'' ?>">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="organizacao">Organização</label>
-			<input readonly type="text" name="organizacao" id="organizacao" class="form-control-plaintext" placeholder="Sol Dourado LTDA" value="<?php echo isset($this->dados)&& array_key_exists('organizacao',$this->dados)?$this->dados['organizacao']:'' ?>">
+			<input readonly type="text" name="organizacao" id="organizacao" class="form-control-plaintext " placeholder="Sol Dourado LTDA" value="<?php echo isset($this->dados)&& array_key_exists('organizacao',$this->dados)?$this->dados['organizacao']:'' ?>">
 		</div>
 		<div class="form-group">
 			<label for="descricao">Descrição</label>
-			<textarea readonly class="form-control-plaintext" name="descricao" id="descricao" cols="30" rows="2" placeholder="Um amigo muito importante." ><?php echo isset($this->dados) && array_key_exists('descricao',$this->dados)?$this->dados['descricao']:'' ?></textarea>
+			<textarea readonly class="form-control-plaintext " name="descricao" id="descricao" cols="30" rows="2" placeholder="Um amigo muito importante." ><?php echo isset($this->dados) && array_key_exists('descricao',$this->dados)?$this->dados['descricao']:'' ?></textarea>
 		</div>
 	</div>
 	<div class="col-12 col-lg-4">
